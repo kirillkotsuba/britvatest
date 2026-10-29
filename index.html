@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Барбершоп «Бритва» — мужские стрижки</title>
+<meta name="description" content="Мужские стрижки, оформление бороды и королевское бритьё. Запись онлайн и по телефону.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #111;
+    --bg2: #1a1a1a;
+    --text: #f2efe9;
+    --muted: #a9a49b;
+    --accent: #c8a165;
+    --line: #2c2c2c;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: Inter, Arial, sans-serif; line-height: 1.6; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { font-family: Oswald, Arial, sans-serif; text-transform: uppercase; letter-spacing: .03em; line-height: 1.1; }
+
+  /* Шапка */
+  header { position: sticky; top: 0; z-index: 10; background: rgba(17,17,17,.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-family: Oswald, sans-serif; font-size: 22px; font-weight: 700; color: var(--accent); }
+  .nav nav a { margin-left: 24px; color: var(--muted); font-size: 15px; }
+  .nav nav a:hover { color: var(--text); }
+  .btn { display: inline-block; background: var(--accent); color: #111; font-weight: 600; padding: 14px 28px; border-radius: 4px; transition: opacity .2s; }
+  .btn:hover { opacity: .85; }
+  .btn-small { padding: 9px 18px; font-size: 14px; }
+
+  /* Первый экран */
+  .hero { min-height: 82vh; display: flex; align-items: center;
+    background: radial-gradient(circle at 75% 30%, rgba(200,161,101,.18), transparent 55%),
+                repeating-linear-gradient(135deg, #141414 0 22px, #161616 22px 44px); }
+  .hero h1 { font-size: clamp(40px, 7vw, 76px); max-width: 760px; }
+  .hero h1 span { color: var(--accent); }
+  .hero p { color: var(--muted); font-size: 19px; max-width: 520px; margin: 22px 0 34px; }
+  .facts { display: flex; gap: 40px; margin-top: 50px; flex-wrap: wrap; }
+  .facts b { display: block; font-family: Oswald, sans-serif; font-size: 34px; color: var(--accent); }
+  .facts small { color: var(--muted); }
+
+  section { padding: 90px 0; }
+  section h2 { font-size: clamp(30px, 4.5vw, 44px); margin-bottom: 40px; }
+
+  /* Услуги */
+  .prices { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 60px; }
+  .row { display: flex; justify-content: space-between; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .row h3 { font-family: Inter, sans-serif; text-transform: none; font-size: 17px; letter-spacing: 0; }
+  .row p { color: var(--muted); font-size: 14px; }
+  .row .price { font-family: Oswald, sans-serif; font-size: 22px; color: var(--accent); white-space: nowrap; }
+
+  /* Мастера */
+  .alt { background: var(--bg2); }
+  .team { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 24px; }
+  .card { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .avatar { height: 220px; display: flex; align-items: center; justify-content: center; font-family: Oswald, sans-serif; font-size: 64px; color: var(--accent);
+    background: linear-gradient(160deg, #262017, #121212); }
+  .card div.info { padding: 20px; }
+  .card h3 { font-size: 22px; }
+  .card p { color: var(--muted); font-size: 14px; }
+
+  /* Отзывы */
+  .reviews { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .review { border-left: 3px solid var(--accent); padding: 4px 0 4px 20px; }
+  .review p { margin-bottom: 10px; }
+  .review small { color: var(--muted); }
+  .stars { color: var(--accent); letter-spacing: 3px; }
+
+  /* Контакты */
+  .contacts { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; align-items: start; }
+  .contacts dl dt { color: var(--muted); font-size: 14px; margin-top: 18px; }
+  .contacts dl dd { font-size: 19px; }
+  .map { min-height: 300px; border: 1px solid var(--line); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--muted); text-align: center; padding: 20px; background: var(--bg2); }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: 14px; }
+
+  /* Кнопка звонка на телефоне */
+  .call { display: none; }
+  @media (max-width: 700px) {
+    .nav nav { display: none; }
+    section { padding: 64px 0; }
+    .call { display: block; position: fixed; left: 16px; right: 16px; bottom: 16px; text-align: center; z-index: 20; box-shadow: 0 6px 20px rgba(0,0,0,.5); }
+    footer { padding-bottom: 90px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">БРИТВА</a>
+    <nav>
+      <a href="#services">Услуги</a>
+      <a href="#team">Мастера</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a href="tel:+70000000000" class="btn btn-small">Записаться</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Стрижка, после которой <span>хочется жить</span></h1>
+    <p>Мужские стрижки, борода и бритьё опасной бритвой. Кофе за наш счёт, запись без ожидания.</p>
+    <a href="tel:+70000000000" class="btn">Записаться на стрижку</a>
+    <div class="facts">
+      <div><b>7 лет</b><small>работаем в городе</small></div>
+      <div><b>4,9 ★</b><small>на Яндекс Картах</small></div>
+      <div><b>12 000+</b><small>довольных клиентов</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <h2>Услуги и цены</h2>
+    <div class="prices">
+      <div>
+        <div class="row"><div><h3>Мужская стрижка</h3><p>Мытьё головы, укладка</p></div><span class="price">1 200 ₽</span></div>
+        <div class="row"><div><h3>Стрижка машинкой</h3><p>Одна насадка</p></div><span class="price">700 ₽</span></div>
+        <div class="row"><div><h3>Детская стрижка</h3><p>До 12 лет</p></div><span class="price">900 ₽</span></div>
+      </div>
+      <div>
+        <div class="row"><div><h3>Оформление бороды</h3><p>Форма, контур, уход</p></div><span class="price">800 ₽</span></div>
+        <div class="row"><div><h3>Королевское бритьё</h3><p>Горячее полотенце, опасная бритва</p></div><span class="price">1 000 ₽</span></div>
+        <div class="row"><div><h3>Стрижка + борода</h3><p>Выгоднее на 300 ₽</p></div><span class="price">1 700 ₽</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="team" class="alt">
+  <div class="wrap">
+    <h2>Наши мастера</h2>
+    <div class="team">
+      <div class="card"><div class="avatar">А</div><div class="info"><h3>Артём</h3><p>Топ-барбер, стаж 9 лет. Классика и фейды.</p></div></div>
+      <div class="card"><div class="avatar">Д</div><div class="info"><h3>Денис</h3><p>Стаж 5 лет. Бороды любой сложности.</p></div></div>
+      <div class="card"><div class="avatar">М</div><div class="info"><h3>Максим</h3><p>Стаж 3 года. Модные и креативные стрижки.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <h2>Отзывы</h2>
+    <div class="reviews">
+      <div class="review"><div class="stars">★★★★★</div><p>Хожу к Артёму уже два года. Ни разу не ушёл недовольным.</p><small>Игорь</small></div>
+      <div class="review"><div class="stars">★★★★★</div><p>Наконец-то нашёл место, где нормально делают бороду. Атмосфера супер.</p><small>Павел</small></div>
+      <div class="review"><div class="stars">★★★★★</div><p>Привёл сына, подстригли быстро и аккуратно. Теперь ходим вместе.</p><small>Сергей</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacts" class="alt">
+  <div class="wrap">
+    <h2>Как нас найти</h2>
+    <div class="contacts">
+      <dl>
+        <dt>Адрес</dt><dd>ул. Ленина, 15</dd>
+        <dt>Телефон</dt><dd><a href="tel:+70000000000">+7 (000) 000-00-00</a></dd>
+        <dt>Часы работы</dt><dd>Ежедневно 10:00 – 21:00</dd>
+        <dt>Мы в соцсетях</dt><dd><a href="#">ВКонтакте</a> · <a href="#">Telegram</a></dd>
+      </dl>
+      <div class="map">Здесь будет карта Яндекса<br>(вставляется кодом из конструктора карт)</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© Барбершоп «Бритва». Пример сайта, все данные вымышлены.</div>
+</footer>
+
+<a href="tel:+70000000000" class="btn call">📞 Позвонить и записаться</a>
+
+</body>
+</html>
